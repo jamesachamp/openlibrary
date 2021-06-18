@@ -208,7 +208,8 @@ jQuery(function () {
             .then((module) => module.init());
     }
 
-    if (document.getElementsByClassName('modal-link').length) {
+    if (document.getElementsByClassName('observations-modal-link').length ||
+        document.getElementsByClassName('notes-modal-link').length) {
         import(/* webpackChunkName: "patron_metadata" */ './patron-metadata')
             .then((module) => module.initPatronMetadata());
     }
