@@ -131,13 +131,9 @@ $if og_title:
           </ul>
       </div>
       $if key == 'notes':
-        <div>
-          Notes view
-        </div>
+        $:render_template('account/notes', items, user, booknotes_counts['notes'], page=current_page)
       $elif key == 'observations':
-        <div>
-          Observations view
-        </div>
+        $:render_template('account/observations', items, user, booknotes_counts['observations'], page=current_page)
       $else:
         <div class="mybooks-list">
           $:macros.Pager(current_page, total_items, results_per_page=25)
