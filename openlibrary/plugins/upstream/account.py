@@ -841,7 +841,7 @@ class public_my_books(delegate.page):
                 books = readlog.get_works(key, page=i.page)
 
             booknotes_counts = PatronBooknotes.get_counts(username)
-            
+
             return render['account/books'](
                 books, key, sponsorship_count=len(sponsorships),
                 reading_log_counts=readlog.reading_log_counts, lists=readlog.lists,
