@@ -251,12 +251,7 @@ jQuery(function () {
 
     if (document.getElementById('searchFacets')) {
         import(/* webpackChunkName: "search" */ './search')
-            .then((module) => {
-                module.initSearchFacets();
-                if (document.getElementById('adminTiming')) {
-                    module.initAdminTiming();
-                }
-            });
+            .then((module) => module.initSearchFacets());
     }
 
     if ($('#cboxPrevious').length) {
