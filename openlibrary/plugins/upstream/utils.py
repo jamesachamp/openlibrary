@@ -900,7 +900,7 @@ def reformat_html(html_str, max_length=None, root_element=None):
     results = '<br>'.join(content[:end_index])
 
     if root_element:
-        results = f'<{root_element}>{results}</{root_element}>' 
+        results = f'<{root_element}>{results}</{root_element}>'
 
     return results
 
