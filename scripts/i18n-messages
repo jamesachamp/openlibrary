@@ -19,7 +19,7 @@ def help():
     print("  update  - update the existing translations by adding newly added string to it.")
     print("  help    - display this help message")
     
-def main(cmd):
+def main(cmd, args):
     if cmd == 'extract':
         message_sources = [
             'openlibrary/templates/',
@@ -32,7 +32,7 @@ def main(cmd):
     elif cmd == 'compile':
         i18n.compile_translations()
     elif cmd == 'update':
-        i18n.update_translations()
+        i18n.update_translations(args)
     elif cmd == 'help':
         help()
     else:
@@ -40,8 +40,8 @@ def main(cmd):
         sys.exit(2)
 
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
-        main(sys.argv[1])
+    if len(sys.argv) >= 2:
+        main(sys.argv[1], sys.argv[2:])
     else:
         help()
         sys.exit(1)

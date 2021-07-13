@@ -90,11 +90,18 @@ def compile_translations():
         if os.path.exists(po_path):
             _compile_translation(po_path, mo_path)
 
-def update_translations():
+def update_translations(locales=[]):
+    if locales:
+        print(f"Updating the following locales: {locales}")
+        locales_to_update = locales
+    else:
+        print("Updating all locales")
+        locales_to_update = get_locales()
+        
     pot_path = os.path.join(root, 'messages.pot')
     template = read_po(open(pot_path, 'rb'))
 
-    for locale in get_locales():
+    for locale in locales_to_update:
         po_path = os.path.join(root, locale, 'messages.po')
         mo_path = os.path.join(root, locale, 'messages.mo')
 
@@ -106,6 +113,8 @@ def update_translations():
             write_po(f, catalog)
             f.close()
             print('updated', po_path)
+        else:
+            print(f"ERROR: {po_path} does not exist...")
 
     compile_translations()
 
